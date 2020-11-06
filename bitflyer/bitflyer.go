@@ -29,8 +29,8 @@ func New(key, secret string) *APIClient {
 
 func (api APIClient) header(method, endpoint string, body []byte) map[string]string {
 	timestamp := strconv.FormatInt(time.Now().Unix(), 10)
-	log.Println(timestamp)
 	message := timestamp + method + endpoint + string(body)
+
 	mac := hmac.New(sha256.New, []byte(api.secret))
 	mac.Write([]byte(message))
 	sign := hex.EncodeToString(mac.Sum(nil))
@@ -38,7 +38,7 @@ func (api APIClient) header(method, endpoint string, body []byte) map[string]str
 		"ACCESS-KEY":       api.key,
 		"ACCESS-TIMESTAMP": timestamp,
 		"ACCESS-SIGN":      sign,
-		"COntent-Type":     "application/json",
+		"Content-Type":     "application/json",
 	}
 }
 
@@ -75,12 +75,11 @@ func (api *APIClient) doRequest(method, urlPath string, query map[string]string,
 	if err != nil {
 		return nil, err
 	}
-
 	return body, nil
 }
 
 type Balance struct {
-	CurrentCode string  `json:"currency_code`
+	CurrentCode string  `json:"currency_code"`
 	Amount      float64 `json:"amount"`
 	Available   float64 `json:"available"`
 }
@@ -88,7 +87,7 @@ type Balance struct {
 func (api *APIClient) GetBalance() ([]Balance, error) {
 	url := "me/getbalance"
 	resp, err := api.doRequest("GET", url, map[string]string{}, nil)
-	log.Printf("%url=%s resp=%s", url, string(resp))
+	log.Printf("url=%s resp=%s", url, string(resp))
 	if err != nil {
 		log.Printf("action=GetBalance err=%s", err.Error())
 		return nil, err

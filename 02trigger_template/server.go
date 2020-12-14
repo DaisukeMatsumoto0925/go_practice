@@ -1,22 +1,17 @@
-// リスト5.29
+// リスト5.2
 package main
 
 import (
 	"html/template"
-	"math/rand"
 	"net/http"
-	"time"
 )
 
 func process(w http.ResponseWriter, r *http.Request) {
-	rand.Seed(time.Now().Unix())
-	var t *template.Template
-	if rand.Intn(10) > 5 {
-		t, _ = template.ParseFiles("layout.html", "red_hello.html")
-	} else {
-		t, _ = template.ParseFiles("layout.html")
+	t, err := template.ParseFiles("02trigger_template/tmpl.html")
+	if err != nil {
+		panic(err)
 	}
-	t.ExecuteTemplate(w, "layout", "")
+	t.Execute(w, "Hello World!")
 }
 
 func main() {

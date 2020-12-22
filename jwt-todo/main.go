@@ -35,6 +35,7 @@ var (
 func main() {
 	router.POST("/login", Login)
 	router.POST("/todo", CreateTodo)
+	router.POST("/logout", Logout)
 
 	log.Fatal(router.Run(":8080"))
 }
@@ -240,4 +241,26 @@ func CreateTodo(c *gin.Context) {
 	//you can proceed to save the Todo to a database
 	//but we will just return it to the caller here:
 	c.JSON(http.StatusCreated, td)
+}
+
+func DeleteAuth(givenUuid string) (int64, error) {
+	deleted, err := client.Del(givenUuid).Result()
+	if err != nil {
+		return 0, err
+	}
+	return deleted, nil
+}
+
+func Logout(c *gin.Context) {
+	au, err := ExtractTokenMetadata(c.Request)
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	deleted, delErr := DeleteAuth(au.AccessUuid)
+	if delErr != nil || deleted == 0 { //if any goes wrong
+		c.JSON(http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	c.JSON(http.StatusOK, "Successfully logged out")
 }

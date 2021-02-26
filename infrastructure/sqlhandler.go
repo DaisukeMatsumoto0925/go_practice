@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"database/sql"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 
@@ -13,7 +14,7 @@ type SqlHandler struct {
 }
 
 func NewSqlHandler() database.SqlHandler {
-	conn, err := sql.Open("mysql", "root:@tcp(db:3306)/sample")
+	conn, err := sql.Open("mysql", "root:@tcp("+os.Getenv("DB_HOST")+":3306)/sample")
 	if err != nil {
 		panic(err.Error)
 	}

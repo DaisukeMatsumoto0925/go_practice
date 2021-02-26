@@ -13,7 +13,7 @@ services:
   app:
     image: golang:1.15
     environment:
-      MYAPP_DATABASE_HOST: db
+      DB_HOST: db
     command: "go run server.go"
     volumes:
       - ./:/go/src

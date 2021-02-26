@@ -8,6 +8,9 @@
             "mode": "auto",
             "program": "${workspaceFolder}/server.go",
             "cwd": "${workspaceFolder}",
+            "env": {
+                "DB_HOST": "localhost",
+            }
         }
     ]
 }

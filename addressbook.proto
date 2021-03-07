@@ -1,6 +1,6 @@
 syntax = "proto3"
 
-package myqpp;
+package myapp;
 
 service AddressBookService {
     rpc Search (SearchRequest) returns (SearchResponse);

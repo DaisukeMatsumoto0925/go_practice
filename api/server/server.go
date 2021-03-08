@@ -9,9 +9,8 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-
-	"pancake/maker/gen/api"
-	"pancake/maker/handler"
+	"pancake.maker/handler"
+	"pancake.maker/xfpng345/api"
 )
 
 func main() {

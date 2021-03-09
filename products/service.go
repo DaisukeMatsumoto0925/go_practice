@@ -27,6 +27,7 @@ func NewService() ProductService {
 }
 
 func (u *impl) ProductByName(ctx context.Context, name string) (*Product, error) {
+
 	product, ok := products[name]
 	if ok {
 		return &product, nil

@@ -1,1 +1,2 @@
-# product_service
+# go-micro-sample
+This Repository is a gokit sample

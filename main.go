@@ -1,5 +1,23 @@
 package main
 
+import (
+	"fmt"
+	"strconv"
+)
+
+// 2倍チェック
+func main() {
+	var s string
+	fmt.Scan(&s)
+
+	n, err := strconv.Atoi(s)
+	if err != nil {
+		println("error")
+	} else {
+		println(n * 2)
+	}
+}
+
 // func main() {
 // 	var a int
 // 	var b int

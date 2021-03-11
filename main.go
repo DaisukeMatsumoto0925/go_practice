@@ -1,30 +1,20 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"io/ioutil"
 	"os"
-
-	"golang.org/x/crypto/ssh/terminal"
-)
-
-const (
-	TERMINAL = "terminal"
-	PIPE     = "pipe"
+	"strconv"
+	"strings"
 )
 
 func main() {
-	isTerminal := terminal.IsTerminal(int(os.Stdin.Fd()))
-	switch isTerminal {
-	case true:
-		var stdin string
-		fmt.Scan(&stdin)
-		fmt.Printf("type: %s, text: %s\n", TERMINAL, stdin)
-		break
-	case false:
-		stdin, _ := ioutil.ReadAll(os.Stdin)
-		fmt.Printf("type: %s, text: %s", PIPE, string(stdin))
-		break
-	default:
+	sc := bufio.NewScanner(os.Stdin)
+	sc.Scan()
+	var n, _ = strconv.Atoi(sc.Text())
+	for i := 0; i < n; i++ {
+		sc.Scan()
+		var s = strings.Split(sc.Text(), " ")
+		fmt.Println("hello = " + s[0] + " , world = " + s[1])
 	}
 }

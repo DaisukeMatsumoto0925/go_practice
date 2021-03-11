@@ -12,9 +12,9 @@ func main() {
 
 	n, err := strconv.Atoi(s)
 	if err != nil {
-		println("error")
+		fmt.Println("error")
 	} else {
-		println(n * 2)
+		fmt.Println(n * 2)
 	}
 }
 

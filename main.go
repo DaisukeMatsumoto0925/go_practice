@@ -1,5 +1,17 @@
 package main
 
+import "fmt"
+
+func main() {
+	var a int
+	var b int
+
+	fmt.Scan(&a)
+	fmt.Scan(&b)
+
+	fmt.Println(a * b)
+}
+
 // func main() {
 // 	sc := bufio.NewScanner(os.Stdin)
 // 	sc.Scan()

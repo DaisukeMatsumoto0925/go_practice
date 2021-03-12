@@ -1,53 +1,46 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"strconv"
-)
-
 // 重複チェック
-var sc = bufio.NewScanner(os.Stdin)
+// var sc = bufio.NewScanner(os.Stdin)
 
-func nextLine() int {
-	sc.Scan()
-	i, e := strconv.Atoi(sc.Text())
-	if e != nil {
-		panic(e)
-	}
-	return i
-}
+// func nextLine() int {
+// 	sc.Scan()
+// 	i, e := strconv.Atoi(sc.Text())
+// 	if e != nil {
+// 		panic(e)
+// 	}
+// 	return i
+// }
 
-func main() {
-	n := nextLine()
-	ary := make([]int, n+1)
-	for i := 0; i < n; i++ {
-		a := nextLine()
-		ary[a] = ary[a] + 1
-	}
+// func main() {
+// 	n := nextLine()
+// 	ary := make([]int, n+1)
+// 	for i := 0; i < n; i++ {
+// 		a := nextLine()
+// 		ary[a] = ary[a] + 1
+// 	}
 
-	var (
-		x int
-		y int
-	)
-	for i, v := range ary {
-		if i > 0 {
-			if v > 1 {
-				x = i
-			}
-			if v == 0 {
-				y = i
-			}
-		}
-	}
+// 	var (
+// 		x int
+// 		y int
+// 	)
+// 	for i, v := range ary {
+// 		if i > 0 {
+// 			if v > 1 {
+// 				x = i
+// 			}
+// 			if v == 0 {
+// 				y = i
+// 			}
+// 		}
+// 	}
 
-	if x > 0 {
-		fmt.Printf("%d %d \n", x, y)
-	} else {
-		fmt.Println("Correct")
-	}
-}
+// 	if x > 0 {
+// 		fmt.Printf("%d %d \n", x, y)
+// 	} else {
+// 		fmt.Println("Correct")
+// 	}
+// }
 
 // var sc = bufio.NewScanner(os.Stdin)
 

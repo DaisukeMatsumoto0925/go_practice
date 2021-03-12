@@ -1,14 +1,20 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strconv"
 )
+
+var sc = bufio.NewScanner(os.Stdin)
 
 // 2倍チェック
 func main() {
 	var s string
-	fmt.Scan(&s)
+	if sc.Scan() {
+		s = sc.Text()
+	}
 
 	n, err := strconv.Atoi(s)
 	if err != nil {

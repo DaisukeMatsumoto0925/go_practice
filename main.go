@@ -1,37 +1,29 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"sort"
-	"strconv"
-)
+// var sc = bufio.NewScanner(os.Stdin)
 
-var sc = bufio.NewScanner(os.Stdin)
+// func nextInt() int {
+// 	sc.Scan()
+// 	i, e := strconv.Atoi(sc.Text())
+// 	if e != nil {
+// 		panic(e)
+// 	}
+// 	return i
+// }
 
-func nextInt() int {
-	sc.Scan()
-	i, e := strconv.Atoi(sc.Text())
-	if e != nil {
-		panic(e)
-	}
-	return i
-}
-
-// 3番目
-func main() {
-	sc.Split(bufio.ScanWords)
-	cap := 6
-	ary := make([]int, cap)
-	for i := 0; i < cap; i++ {
-		ary[i] = nextInt()
-	}
-	sort.SliceStable(ary, func(i, j int) bool {
-		return ary[i] < ary[j]
-	})
-	fmt.Println(ary[3])
-}
+// // 3番目
+// func main() {
+// 	sc.Split(bufio.ScanWords)
+// 	cap := 6
+// 	ary := make([]int, cap)
+// 	for i := 0; i < cap; i++ {
+// 		ary[i] = nextInt()
+// 	}
+// 	sort.SliceStable(ary, func(i, j int) bool {
+// 		return ary[i] < ary[j]
+// 	})
+// 	fmt.Println(ary[3])
+// }
 
 //増減管理
 // func main() {

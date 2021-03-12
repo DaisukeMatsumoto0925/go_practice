@@ -2,27 +2,25 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"os"
-	"strconv"
 )
 
 var sc = bufio.NewScanner(os.Stdin)
 
 // 2倍チェック
-func main() {
-	var s string
-	if sc.Scan() {
-		s = sc.Text()
-	}
+// func main() {
+// 	var s string
+// 	if sc.Scan() {
+// 		s = sc.Text()
+// 	}
 
-	n, err := strconv.Atoi(s)
-	if err != nil {
-		fmt.Println("error")
-	} else {
-		fmt.Println(n * 2)
-	}
-}
+// 	n, err := strconv.Atoi(s)
+// 	if err != nil {
+// 		fmt.Println("error")
+// 	} else {
+// 		fmt.Println(n * 2)
+// 	}
+// }
 
 // func main() {
 // 	var a int

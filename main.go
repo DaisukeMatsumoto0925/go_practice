@@ -1,5 +1,6 @@
 package main
 
+// SNSログ
 // func main() {
 // 	var n, q int
 // 	fmt.Scan(&n, &q)

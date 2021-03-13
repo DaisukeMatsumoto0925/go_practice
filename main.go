@@ -1,5 +1,29 @@
 package main
 
+// func main() {
+// 	var s string
+// 	fmt.Scan(&s)
+// 	var a []string
+// 	start := 0
+// 	i := 1
+// 	for i < len(s) {
+// 		c := s[i]
+// 		if 'A' <= c && c <= 'Z' {
+// 			a = append(a, s[start:i+1])
+// 			start = i + 1
+// 			i++
+// 		}
+// 		i++
+// 	}
+// 	sort.Slice(a, func(i, j int) bool {
+// 		return strings.ToLower(a[i]) < strings.ToLower(a[j])
+// 	})
+// 	for _, e := range a {
+// 		fmt.Printf("%v", e)
+// 	}
+// 	fmt.Println()
+// }
+
 // SNSログ
 // func main() {
 // 	var n, q int

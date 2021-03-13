@@ -1,5 +1,25 @@
 package main
 
+// sample
+// var sc = bufio.NewScanner(os.Stdin)
+
+// func nextLine() string {
+// 	sc.Scan()
+// 	return sc.Text()
+// }
+
+// func main() {
+// 	var (
+// 		n int
+// 		w string
+// 	)
+// 	n, _ = strconv.Atoi(nextLine())
+// 	w = nextLine()
+// 	for i := 0; i < n; i++ {
+// 		fmt.Println(w)
+// 	}
+// }
+
 // func main() {
 // 	var s string
 // 	fmt.Scan(&s)

@@ -1,5 +1,25 @@
 package main
 
+// 偶数判定
+// func isEven(p int) bool {
+// 	if p%2 == 0 {
+// 		return true
+// 	}
+// 	return false
+// }
+
+// func main() {
+// 	var a, b int
+// 	fmt.Scan(&a, &b)
+// 	product := a * b
+// 	result := isEven(product)
+// 	if result {
+// 		fmt.Println("Even")
+// 	} else {
+// 		fmt.Println("Odd")
+// 	}
+// }
+
 // sample
 // var sc = bufio.NewScanner(os.Stdin)
 

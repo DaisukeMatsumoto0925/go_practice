@@ -17,7 +17,7 @@ func NewMessage() Message {
 	return Message("Hi there!")
 }
 
-func NewGreter(m Message) Greeter {
+func NewGreeter(m Message) Greeter {
 	return Greeter{Message: m}
 }
 
@@ -35,9 +35,10 @@ func (e Event) Start() {
 }
 
 func main() {
-	message := NewMessage()
-	greeter := NewGreter(message)
-	event := NewEvent(greeter)
+	// message := NewMessage()
+	// greeter := NewGreter(message)
+	// event := NewEvent(greeter)
+	e := InitializeEvent()
 
-	event.Start()
+	e.Start()
 }

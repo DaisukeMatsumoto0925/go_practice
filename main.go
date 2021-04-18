@@ -1,27 +1,19 @@
 package main
 
 type (
-	MovieLister struct {
-		finder MoviesFinder
-	}
-	MoviesFinder interface {
-		FindAll() []Movie
+	Message string
+	Greeter struct {
+		Message Message
 	}
 
-	Movie struct {
-		Director string
+	Event struct {
 	}
 )
 
-func (ml *MovieLister) MoviesDirectedBy(director string) []Movie {
-	allMovies := ml.finder.FindAll()
-	result := make([]Movie, 0, len(allMovies))
+func NewMessage() Message {
+	return Message("Hi there!")
+}
 
-	for _, m := range allMovies {
-		if director == m.Director {
-			result = append(result, m)
-		}
-	}
-
-	return result
+func NewGreter(m Message) Greeter {
+	return Greeter{Message: m}
 }

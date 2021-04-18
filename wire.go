@@ -1,10 +1,10 @@
-//+build wireinject
+// +build wireinject
 
 package main
 
 import "github.com/google/wire"
 
-func InitializeEvent(phrase string) (Event, error) {
+func InitializeEvent() Event {
 	wire.Build(NewEvent, NewGreeter, NewMessage)
-	return Event{}, nil
+	return Event{}
 }

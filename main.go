@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type (
 	Message string
 	Greeter struct {
@@ -7,6 +9,7 @@ type (
 	}
 
 	Event struct {
+		Greeter Greeter
 	}
 )
 
@@ -16,4 +19,25 @@ func NewMessage() Message {
 
 func NewGreter(m Message) Greeter {
 	return Greeter{Message: m}
+}
+
+func (g Greeter) Greet() Message {
+	return g.Message
+}
+
+func NewEvent(g Greeter) Event {
+	return Event{Greeter: g}
+}
+
+func (e Event) Start() {
+	msg := e.Greeter.Greet()
+	fmt.Println(msg)
+}
+
+func main() {
+	message := NewMessage()
+	greeter := NewGreter(message)
+	event := NewEvent(greeter)
+
+	event.Start()
 }

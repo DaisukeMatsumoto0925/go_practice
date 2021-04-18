@@ -19,8 +19,8 @@ type (
 	}
 )
 
-func NewMessage() Message {
-	return Message("Hi there!")
+func NewMessage(phrase string) Message {
+	return Message(phrase)
 }
 
 func NewGreeter(m Message) Greeter {
@@ -50,7 +50,7 @@ func (e Event) Start() {
 	fmt.Println(msg)
 }
 func main() {
-	e, err := InitializeEvent()
+	e, err := InitializeEvent("test")
 	if err != nil {
 		fmt.Printf("failed to create event: %s\n", err)
 		os.Exit(2)

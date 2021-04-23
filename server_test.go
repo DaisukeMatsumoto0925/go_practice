@@ -15,6 +15,7 @@ func (s *StubPlayerStore) GetPlayerScore(name string) int {
 	score := s.scores[name]
 	return score
 }
+
 func TestGETPlayers(t *testing.T) {
 	store := StubPlayerStore{
 		map[string]int{
@@ -24,30 +25,57 @@ func TestGETPlayers(t *testing.T) {
 	}
 	server := &PlayerServer{&store}
 
-	t.Run("returns Pepper's score", func(t *testing.T) {
-		request := newGetScoreRequest("Pepper")
+	tests := []struct {
+		name               string
+		player             string
+		expectedHTTPStatus int
+		expectedScore      string
+	}{
+		{
+			name:               "Returns Pepper's score",
+			player:             "Pepper",
+			expectedHTTPStatus: http.StatusOK,
+			expectedScore:      "20",
+		},
+		{
+			name:               "Returns Floyd's score",
+			player:             "Floyd",
+			expectedHTTPStatus: http.StatusOK,
+			expectedScore:      "10",
+		},
+		{
+			name:               "Returns 404 on missing players",
+			player:             "Apollo",
+			expectedHTTPStatus: http.StatusNotFound,
+			expectedScore:      "0",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			request := newGetScoreRequest(tt.player)
+			response := httptest.NewRecorder()
+
+			server.ServeHTTP(response, request)
+
+			assertStatus(t, response.Code, tt.expectedHTTPStatus)
+			assertResponseBody(t, response.Body.String(), tt.expectedScore)
+		})
+	}
+}
+
+func TestStoreWins(t *testing.T) {
+	store := StubPlayerStore{
+		map[string]int{},
+	}
+	server := &PlayerServer{&store}
+
+	t.Run("it returns accepted on POST", func(t *testing.T) {
+		request, _ := http.NewRequest(http.MethodPost, "/players/Pepper", nil)
 		response := httptest.NewRecorder()
 
 		server.ServeHTTP(response, request)
 
-		assertResponseBody(t, response.Body.String(), "20")
-	})
-
-	t.Run("returns Floyd's score", func(t *testing.T) {
-		request := newGetScoreRequest("Floyd")
-		response := httptest.NewRecorder()
-
-		server.ServeHTTP(response, request)
-
-		assertResponseBody(t, response.Body.String(), "10")
-	})
-
-	t.Run("returns 404 on missing players", func(t *testing.T) {
-		request := newGetScoreRequest("Apollo")
-		response := httptest.NewRecorder()
-
-		server.ServeHTTP(response, request)
-		assertStatus(t, response.Code, http.StatusNotFound)
+		assertStatus(t, response.Code, http.StatusAccepted)
 	})
 }
 

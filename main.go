@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/DaisukeMatsumoto0925/go_embedding/status"
+	"github.com/DaisukeMatsumoto0925/go_embedding/dolphin"
 )
 
 type Flyer interface {
@@ -42,5 +42,6 @@ func main() {
 	// fmt.Println(aShinJinrui.Fly())
 	// fmt.Println(aShinJinrui.Run())
 	// grasshopper.InitGrasshopper()
-	status.InitStatus()
+	// status.InitStatus()
+	dolphin.InitDolphin()
 }

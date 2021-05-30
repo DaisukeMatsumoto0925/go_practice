@@ -45,4 +45,5 @@ func InitStatus() {
 	aShinJinrui3.HighJUmp()
 	fmt.Println("aPoorGrasshopper is", aPoorGrasshoper.status)
 	fmt.Println("aShinJinrui3 is", aShinJinrui3.status)
+	fmt.Println("aShinJinrui3 is", aShinJinrui3.poorGrasshopper.status)
 }

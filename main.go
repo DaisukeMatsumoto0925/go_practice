@@ -1,6 +1,8 @@
 package main
 
-import "github.com/DaisukeMatsumoto0925/go_embedding/grasshopper"
+import (
+	"github.com/DaisukeMatsumoto0925/go_embedding/status"
+)
 
 type Flyer interface {
 	Fly() string
@@ -39,5 +41,6 @@ func main() {
 	// }
 	// fmt.Println(aShinJinrui.Fly())
 	// fmt.Println(aShinJinrui.Run())
-	grasshopper.InitGrasshopper()
+	// grasshopper.InitGrasshopper()
+	status.InitStatus()
 }

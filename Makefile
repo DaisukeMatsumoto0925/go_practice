@@ -19,7 +19,7 @@ generate:
 
 .PHONY: migrate-create
 migrate-create:
-	docker-compose exec app migrate -ext sql -dir migrations ${FILENAME}
+	docker-compose exec app migrate create -ext sql -dir migrations ${FILENAME}
 
 .PHONY: migrate-up
 migrate-up:

@@ -1,6 +1,6 @@
 DB_HOST=db
 DB_PORT=3306
-DB_USER=testuser
+DB_USER=root
 DB_PASSWORD=password
 DB_NAME=graphql-app-development
 DB_CONN=mysql://${DB_USER}:${DB_PASSWORD}@tcp\(${DB_HOST}:${DB_PORT}\)/${DB_NAME}

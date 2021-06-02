@@ -16,8 +16,9 @@ import (
 func main() {
 	e := echo.New()
 
-	if err := config.InitDB(); err != nil {
-        panic(err.Error())
+	db, err := config.InitDB()
+	if err != nil {
+		panic(err.Error())
     }
 
 	e.Use(middleware.Recover())
@@ -30,7 +31,7 @@ func main() {
 
 	graphqlHandler := handler.NewDefaultServer(
 		generated.NewExecutableSchema(
-			generated.Config{Resolvers: &graph.Resolver{}},
+			generated.Config{Resolvers: &graph.Resolver{DB: db}},
 		),
 	)
 	playgroundHandler := playground.Handler("GraphQL", "/query")

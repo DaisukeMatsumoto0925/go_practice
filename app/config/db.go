@@ -12,15 +12,12 @@ import (
 
 var db *gorm.DB
 
-func InitDB() error {
+func InitDB() (*gorm.DB, error) {
     conn, err := gorm.Open("mysql", dbsn())
     if err != nil {
-        return err
+        return nil, err
     }
-
-    db = conn.Set("gorm:auto_update", false)
-
-    return nil
+    return conn, err
 }
 
 func dbsn() string {

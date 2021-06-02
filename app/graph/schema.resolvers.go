@@ -11,14 +11,12 @@ import (
 )
 
 func (r *mutationResolver) CreateTask(ctx context.Context, input model.NewTask) (*model.Task, error) {
-	timestamp := time.Now().Format("2006-01-02 15:04:05")
-
 	task := model.Task{
 		Title:     input.Title,
 		Note:      input.Note,
 		Completed: 0,
-		CreatedAt: timestamp,
-		UpdatedAt: timestamp,
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
 	}
 
 	r.DB.Create(&task)

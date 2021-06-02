@@ -3,8 +3,8 @@ type Task {
   title: String!
   note: String!
   completed: Int!
-  created_at: String!
-  updated_at: String!
+  created_at: Time!
+  updated_at: Time!
 }
 
 input NewTask {

@@ -7,11 +7,23 @@ import (
 	"app/graph/generated"
 	"app/graph/model"
 	"context"
-	"fmt"
+	"time"
 )
 
 func (r *mutationResolver) CreateTask(ctx context.Context, input model.NewTask) (*model.Task, error) {
-	panic(fmt.Errorf("not implemented"))
+	timestamp := time.Now().Format("2006-01-02 15:04:05")
+
+	task := model.Task{
+		Title:     input.Title,
+		Note:      input.Note,
+		Completed: 0,
+		CreatedAt: timestamp,
+		UpdatedAt: timestamp,
+	}
+
+	r.DB.Create(&task)
+
+	return &task, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.

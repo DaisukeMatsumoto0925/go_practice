@@ -1,16 +1,15 @@
 type Task {
   id: ID!
   title: String!
-  notes: String!
-  completed: Boolean!
-  due: Time
+  note: String!
+  completed: Int!
+  created_at: String!
+  updated_at: String!
 }
 
 input NewTask {
   title: String!
-  notes: String
-  completed: Boolean
-  due: Time
+  note: String!
 }
 
 type Mutation {

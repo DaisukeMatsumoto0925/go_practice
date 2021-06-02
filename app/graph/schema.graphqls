@@ -1,5 +1,5 @@
 type Task {
-  id: ID!
+  id: Int!
   title: String!
   note: String!
   completed: Int!

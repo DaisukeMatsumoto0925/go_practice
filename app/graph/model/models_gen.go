@@ -12,7 +12,7 @@ type NewTask struct {
 }
 
 type Task struct {
-	ID        string    `json:"id"`
+	ID        int       `json:"id"`
 	Title     string    `json:"title"`
 	Note      string    `json:"note"`
 	Completed int       `json:"completed"`

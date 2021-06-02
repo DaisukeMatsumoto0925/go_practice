@@ -8,7 +8,9 @@ type Task {
 
 input NewTask {
   title: String!
-  notes: String!
+  notes: String
+  completed: Boolean
+  due: Time
 }
 
 type Mutation {

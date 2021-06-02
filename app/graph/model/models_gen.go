@@ -7,8 +7,10 @@ import (
 )
 
 type NewTask struct {
-	Title string `json:"title"`
-	Notes string `json:"notes"`
+	Title     string     `json:"title"`
+	Notes     *string    `json:"notes"`
+	Completed *bool      `json:"completed"`
+	Due       *time.Time `json:"due"`
 }
 
 type Task struct {

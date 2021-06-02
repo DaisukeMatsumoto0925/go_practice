@@ -198,7 +198,9 @@ var sources = []*ast.Source{
 
 input NewTask {
   title: String!
-  notes: String!
+  notes: String
+  completed: Boolean
+  due: Time
 }
 
 type Mutation {
@@ -1672,7 +1674,23 @@ func (ec *executionContext) unmarshalInputNewTask(ctx context.Context, obj inter
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notes"))
-			it.Notes, err = ec.unmarshalNString2string(ctx, v)
+			it.Notes, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "completed":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("completed"))
+			it.Completed, err = ec.unmarshalOBoolean2ᚖbool(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "due":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("due"))
+			it.Due, err = ec.unmarshalOTime2ᚖtimeᚐTime(ctx, v)
 			if err != nil {
 				return it, err
 			}

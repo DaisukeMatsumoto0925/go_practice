@@ -1,0 +1,19 @@
+type Task {
+  id: Int!
+  title: String!
+  note: String!
+  completed: Int!
+  created_at: Time!
+  updated_at: Time!
+}
+
+input NewTask {
+  title: String!
+  note: String!
+}
+
+type Mutation {
+  createTask(input: NewTask!): Task!
+}
+
+scalar Time

@@ -1,0 +1,14 @@
+{
+    "cluster": "ii-cluster",
+    "serviceName": "index_indicators_service",
+    "taskDefinition": "index_indicators_service",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-1:823425155155:targetgroup/ii-https/497beb25c41ee70f",
+            "containerName": "index_indicators_service",
+            "containerPort": 8080
+        }
+    ],
+    "desiredCount": 1,
+    "role": "arn:aws:iam::823425155155:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+}

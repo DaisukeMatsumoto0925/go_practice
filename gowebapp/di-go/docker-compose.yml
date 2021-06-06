@@ -1,0 +1,19 @@
+version: "3"
+services:
+  db:
+    image: mysql:8.0
+    container_name: di-go-db
+    volumes:
+      - db-store:/var/lib/mysql
+      - ./di-go/mysql/logs:/var/log/mysql
+      - ./di-go/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      - MYSQL_DATABASE=di-go
+      - MYSQL_USER=di-go
+      - MYSQL_PASSWORD=di-go
+      - MYSQL_ROOT_PASSWORD=di-go
+      - TZ=Asia/Tokyo
+    ports:
+      - "3306:3306"
+volumes:
+  db-store:

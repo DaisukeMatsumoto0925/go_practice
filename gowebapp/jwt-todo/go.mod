@@ -1,12 +1,10 @@
-module jwt-todo
+module github.com/xfpng345/go_micro_ser
 
 go 1.15
 
 require (
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
-	github.com/gin-gonic/gin v1.6.3 // indirect
-	github.com/go-redis/redis/v7 v7.4.0 // indirect
-	github.com/joho/godotenv v1.3.0 // indirect
-	github.com/myesui/uuid v1.0.0 // indirect
-	github.com/twinj/uuid v1.0.0 // indirect
+	github.com/go-kit/kit v0.10.0
+	github.com/gorilla/mux v1.8.0
+	github.com/sony/gobreaker v0.4.1
+	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
 )

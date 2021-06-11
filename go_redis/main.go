@@ -6,9 +6,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/garyburd/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 	"github.com/soveran/redisurl"
 )
+
+var redisUrl = "redis://localhost:6379"
 
 func main() {
 	fmt.Println("start")
@@ -19,7 +21,7 @@ func main() {
 
 	userName := os.Args[1]
 
-	conn, err := redisurl.ConnectToURL("redis://localhost:6379")
+	conn, err := redisurl.ConnectToURL(redisUrl)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -51,7 +53,7 @@ func main() {
 
 	subChan := make(chan string)
 	go func() {
-		subConn, err := redisurl.ConnectToURL("redis://localhost:6379")
+		subConn, err := redisurl.ConnectToURL(redisUrl)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)

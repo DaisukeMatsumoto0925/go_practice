@@ -1,8 +1,7 @@
 package main
 
 import (
-	"io"
-	"net"
+	"bufio"
 	"os"
 )
 
@@ -25,12 +24,19 @@ import (
 //     fmt.Println(buffer.String())
 // }
 
+// func main() {
+//     conn, err := net.Dial("tcp", "ascii.jp:80")
+//     if err != nil {
+//     panic(err)
+//     }
+//     conn.Write([]byte("GET / HTTP/1.0\r\nHost: ascii.jp\r\n\r\n"))
+//     io.Copy(os.Stdout, conn)
+// }
 
 func main() {
-    conn, err := net.Dial("tcp", "ascii.jp:80")
-    if err != nil {
-    panic(err)
-    }
-    conn.Write([]byte("GET / HTTP/1.0\r\nHost: ascii.jp\r\n\r\n"))
-    io.Copy(os.Stdout, conn)
+    buffer := bufio.NewWriter(os.Stdout)
+    buffer.WriteString("bufio.Writer ")
+    buffer.Flush()
+    buffer.WriteString("example\n")
+    buffer.Flush()
 }

@@ -11,6 +11,9 @@ func main() {
 	go func() {
 		for {
 			j, more := <-jobs
+			fmt.Println(<-jobs)
+			fmt.Println(j)
+			fmt.Println(more)
 			if more {
 				fmt.Println("received job", j)
 			} else {

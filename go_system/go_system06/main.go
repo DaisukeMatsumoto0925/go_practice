@@ -3,32 +3,30 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"net"
 	"net/http"
 	"net/http/httputil"
-	"strings"
 )
 
 func main() {
 	conn, err := net.Dial("tcp", "localhost:8888")
 	if err != nil {
-	panic(err)
+		panic(err)
 	}
 	request, err := http.NewRequest(
-	"GET", "http://localhost:8888", nil)
+		"GET", "http://localhost:8888", nil)
 	if err != nil {
-	panic(err)
+		panic(err)
 	}
 	request.Write(conn)
 	response, err := http.ReadResponse(
-	bufio.NewReader(conn), request)
+		bufio.NewReader(conn), request)
 	if err != nil {
-	panic(err)
+		panic(err)
 	}
 	dump, err := httputil.DumpResponse(response, true)
 	if err != nil {
-	panic(err)
+		panic(err)
 	}
 	fmt.Println(string(dump))
-	}
+}

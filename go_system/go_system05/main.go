@@ -11,7 +11,7 @@ import (
 
 func main() {
 	conn, err := net.Dial("tcp", "ascii.jp:80")
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 	conn.Write([]byte("GET / HTTP/1.0\r\nHost: ascii.jp\r\n\r\n"))

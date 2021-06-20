@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	mock_main "github.com/DaisukeMatsumoto0925/go_mock/mock"
+	mock_main "github.com/DaisukeMatsumoto0925/go_mock/sample1/mock"
 	"github.com/golang/mock/gomock"
 )
 

@@ -1,16 +1,17 @@
 package main
 
-import (
-	"fmt"
-	"net/http"
-	"time"
-)
-
-func greet(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World! %s", time.Now())
+type ApiClient interface {
+	Request(string) (string, error)
 }
 
-func main() {
-	http.HandleFunc("/", greet)
-	http.ListenAndServe(":8080", nil)
+type DataRegister struct {
+	client ApiClient
+}
+
+func (d *DataRegister) Register(data string) (string, error) {
+	result, err := d.client.Request(data)
+	if err != nil {
+		return "", err
+	}
+	return result, nil
 }

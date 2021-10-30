@@ -1,11 +1,13 @@
 package services
 
 import (
+	"context"
 	"log"
 
 	"github.com/DaisukeMatsumoto0925/ddd_go/aggregate"
 	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer"
 	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer/memory"
+	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer/mongo"
 	"github.com/DaisukeMatsumoto0925/ddd_go/domain/product"
 	prodmemory "github.com/DaisukeMatsumoto0925/ddd_go/domain/product/memory"
 	"github.com/google/uuid"
@@ -32,6 +34,17 @@ func NewOrderService(cfgs ...OrderConfiguration) (*OrderService, error) {
 
 func WithCustomerRepository(cr customer.CustomerRepository) OrderConfiguration {
 	return func(os *OrderService) error {
+		os.customers = cr
+		return nil
+	}
+}
+
+func WithMongoCustomerRepository(connectionString string) OrderConfiguration {
+	return func(os *OrderService) error {
+		cr, err := mongo.New(context.Background(), connectionString)
+		if err != nil {
+			return err
+		}
 		os.customers = cr
 		return nil
 	}

@@ -5,17 +5,17 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/DaisukeMatsumoto0925/ddd_go/aggregate"
+	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer"
 	"github.com/google/uuid"
 )
 
 func TestMemoryRepository_Add(t *testing.T) {
 	type fields struct {
-		customers map[uuid.UUID]aggregate.Customer
+		customers map[uuid.UUID]customer.Customer
 		Mutex     sync.Mutex
 	}
 	type args struct {
-		c aggregate.Customer
+		c customer.Customer
 	}
 	tests := []struct {
 		name    string
@@ -40,7 +40,7 @@ func TestMemoryRepository_Add(t *testing.T) {
 
 func TestMemoryRepository_Get(t *testing.T) {
 	type fields struct {
-		customers map[uuid.UUID]aggregate.Customer
+		customers map[uuid.UUID]customer.Customer
 		Mutex     sync.Mutex
 	}
 	type args struct {
@@ -50,7 +50,7 @@ func TestMemoryRepository_Get(t *testing.T) {
 		name    string
 		fields  fields
 		args    args
-		want    aggregate.Customer
+		want    customer.Customer
 		wantErr bool
 	}{
 		// TODO: Add test cases.
@@ -75,11 +75,11 @@ func TestMemoryRepository_Get(t *testing.T) {
 
 func TestMemoryRepository_Update(t *testing.T) {
 	type fields struct {
-		customers map[uuid.UUID]aggregate.Customer
+		customers map[uuid.UUID]customer.Customer
 		Mutex     sync.Mutex
 	}
 	type args struct {
-		c aggregate.Customer
+		c customer.Customer
 	}
 	tests := []struct {
 		name    string

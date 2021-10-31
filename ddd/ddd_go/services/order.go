@@ -4,7 +4,6 @@ import (
 	"context"
 	"log"
 
-	"github.com/DaisukeMatsumoto0925/ddd_go/aggregate"
 	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer"
 	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer/memory"
 	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer/mongo"
@@ -55,7 +54,7 @@ func WithMemoryCustomerRepository() OrderConfiguration {
 	return WithCustomerRepository(cr)
 }
 
-func WithMemoryProductRepository(products []aggregate.Product) OrderConfiguration {
+func WithMemoryProductRepository(products []product.Product) OrderConfiguration {
 	return func(os *OrderService) error {
 		pr := prodmemory.New()
 
@@ -76,7 +75,7 @@ func (o *OrderService) CreateOrder(customerID uuid.UUID, productIDs []uuid.UUID)
 		return 0, err
 	}
 
-	var products []aggregate.Product
+	var products []product.Product
 	var price float64
 	for _, id := range productIDs {
 		p, err := o.products.GetByID(id)

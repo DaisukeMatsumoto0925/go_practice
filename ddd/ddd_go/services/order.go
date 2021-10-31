@@ -4,11 +4,11 @@ import (
 	"context"
 	"log"
 
-	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer"
-	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer/memory"
-	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer/mongo"
-	"github.com/DaisukeMatsumoto0925/ddd_go/domain/product"
-	prodmemory "github.com/DaisukeMatsumoto0925/ddd_go/domain/product/memory"
+	"github.com/DaisukeMatsumoto0925/tavern/domain/customer"
+	"github.com/DaisukeMatsumoto0925/tavern/domain/customer/memory"
+	"github.com/DaisukeMatsumoto0925/tavern/domain/customer/mongo"
+	"github.com/DaisukeMatsumoto0925/tavern/domain/product"
+	prodmemory "github.com/DaisukeMatsumoto0925/tavern/domain/product/memory"
 	"github.com/google/uuid"
 )
 

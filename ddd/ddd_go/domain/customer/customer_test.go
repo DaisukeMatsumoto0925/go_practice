@@ -28,9 +28,9 @@ func TestNewCustomer(t *testing.T) {
 				name: "Daisuke Mt",
 			},
 			// want: Customer{
-			// 	person:       &entity.Person{},
-			// 	products:     []*entity.Item{},
-			// 	transactions: []valueobject.Transaction{},
+			// 	person:       &tavern.Person{},
+			// 	products:     []*tavern.Item{},
+			// 	transactions: []tavern.Transaction{},
 			// },
 			wantErr: false,
 		},

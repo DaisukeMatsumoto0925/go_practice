@@ -13,8 +13,8 @@ var (
 
 type ProductRepository interface {
 	GetAll() ([]Product, error)
-	GetByID(id uuid.UUID) (Product, error)
-	Add(product Product) error
-	Update(product Product) error
-	Delete(id uuid.UUID) error
+	GetByID(uuid.UUID) (Product, error)
+	Add(Product) error
+	Update(Product) error
+	Delete(uuid.UUID) error
 }

@@ -1,4 +1,4 @@
-module github.com/DaisukeMatsumoto0925/ddd_go
+module github.com/DaisukeMatsumoto0925/tavern
 
 go 1.16
 

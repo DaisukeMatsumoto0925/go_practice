@@ -3,7 +3,7 @@ package memory
 import (
 	"sync"
 
-	"github.com/DaisukeMatsumoto0925/ddd_go/domain/product"
+	"github.com/DaisukeMatsumoto0925/tavern/domain/product"
 	"github.com/google/uuid"
 )
 

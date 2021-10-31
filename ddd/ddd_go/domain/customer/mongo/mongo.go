@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/DaisukeMatsumoto0925/ddd_go/domain/customer"
+	"github.com/DaisukeMatsumoto0925/tavern/domain/customer"
 	"github.com/google/uuid"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"

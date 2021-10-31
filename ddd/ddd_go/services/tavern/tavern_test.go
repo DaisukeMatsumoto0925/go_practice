@@ -3,12 +3,13 @@ package services
 import (
 	"testing"
 
+	"github.com/DaisukeMatsumoto0925/tavern/services/order"
 	"github.com/google/uuid"
 )
 
 func TestTavern_Order(t *testing.T) {
 	type fields struct {
-		OrderService   *OrderService
+		OrderService   *order.OrderService
 		BillingService interface{}
 	}
 	type args struct {

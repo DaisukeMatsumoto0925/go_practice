@@ -1,0 +1,14 @@
+FROM golang:1.17
+
+WORKDIR /app
+
+RUN apt-get update && apt-get -y install default-mysql-client
+
+RUN GO111MODULE=off go get -u github.com/kyoh86/richgo && \
+  go get -u bitbucket.org/liamstask/goose/cmd/goose
+
+RUN go install github.com/makiuchi-d/arelo@latest && \
+  go install github.com/99designs/gqlgen@v0.13.0 && \
+  go install github.com/golang/mock/mockgen@v1.6.0
+
+ENTRYPOINT ["sh", "./entrypoint.sh"]

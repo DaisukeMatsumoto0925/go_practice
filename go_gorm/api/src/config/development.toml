@@ -1,0 +1,14 @@
+hoge = ""
+
+[app]
+  port = 8080
+
+[db]
+  user = "root"
+  name = "api_dev"
+  password = "password"
+  host = "localhost"
+  port = "3306"
+  maxOpenConnection = 100
+  maxIdleConnection = 10
+  connectionMaxLifetimeHour = 1

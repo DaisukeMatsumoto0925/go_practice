@@ -11,10 +11,23 @@ import (
 
 func Test_main(t *testing.T) {
 	rdb := rdb.NewRDB()
+	tx := rdb.Begin()
+	if err := tx.Begin().Error; err != nil {
+		fmt.Println(err)
+	}
 	rdb2 := newRdb()
 	fmt.Println(rdb.Config)
 
 	tx1 := rdb.Begin()
+	if err := rdb.Begin().Error; err != nil {
+		fmt.Println(&err)
+	}
+	if err := rdb.Begin().Error; err != nil {
+		fmt.Println(&err)
+	}
+	if err := rdb.Begin().Error; err != nil {
+		fmt.Println(&err)
+	}
 	t.Cleanup(func() {
 		fmt.Println("Rollback!!")
 		if err := tx1.Rollback().Error; err != nil {

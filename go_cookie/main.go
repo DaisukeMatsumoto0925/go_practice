@@ -23,3 +23,12 @@ func showCookie(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("./cookie.html"))
 	tmpl.Execute(w, cookie)
 }
+
+func main() {
+	http.HandleFunc("/", setCookies)
+	http.HandleFunc("/cookie", showCookie)
+
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatal("ListenAndServe: ", err)
+	}
+}

@@ -29,18 +29,21 @@ func showCookie(w http.ResponseWriter, r *http.Request) {
 var store = sessions.NewCookieStore([]byte("SESSION_KEY"))
 
 func MyHandler(w http.ResponseWriter, r *http.Request) {
-	session, _ := store.Get(r, "session-name")
-	session.Values["foo"] = "bar"
-	session.Values[42] = 43
+	// Get a session.
+	session, err := store.Get(r, "session-name")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
-	session.Options.HttpOnly = true
-	session.Options.MaxAge = 10000
-	session.Options.Secure = true
-
-	session.AddFlash("foo")
-	session.AddFlash("bar")
-
-	err := session.Save(r, w)
+	// Get the previous flashes, if any.
+	if flashes := session.Flashes(); len(flashes) > 0 {
+		// Use the flash values.
+	} else {
+		// Set a new flash.
+		session.AddFlash("Hello, flash messages world!")
+	}
+	err = session.Save(r, w)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

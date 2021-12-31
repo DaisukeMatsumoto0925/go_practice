@@ -6,7 +6,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type Handler struct{}
+type Handler struct {
+	// rdb
+	// redis
+}
 
 // Returns all pets
 // (GET /pets)

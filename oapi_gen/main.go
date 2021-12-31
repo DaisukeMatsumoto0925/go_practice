@@ -9,7 +9,7 @@ import (
 
 func main() {
 	r := echo.New()
-	si := &openapi.Server{}
+	si := &openapi.Handler{}
 	openapi.RegisterHandlersWithBaseURL(r, si, "api")
 	log.Fatal(r.Start(":8080"))
 

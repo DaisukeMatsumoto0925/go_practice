@@ -6,11 +6,11 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type Server struct{}
+type Handler struct{}
 
 // Returns all pets
 // (GET /pets)
-func (s *Server) FindPets(ctx echo.Context, params FindPetsParams) error {
+func (s *Handler) FindPets(ctx echo.Context, params FindPetsParams) error {
 	type User struct {
 		Name  string `json:"name" xml:"name"`
 		Email string `json:"email" xml:"email"`
@@ -25,18 +25,18 @@ func (s *Server) FindPets(ctx echo.Context, params FindPetsParams) error {
 
 // Creates a new pet
 // (POST /pets)
-func (s *Server) AddPet(ctx echo.Context) error {
+func (s *Handler) AddPet(ctx echo.Context) error {
 	return nil
 }
 
 // Deletes a pet by ID
 // (DELETE /pets/{id})
-func (s *Server) DeletePet(ctx echo.Context, id int64) error {
+func (s *Handler) DeletePet(ctx echo.Context, id int64) error {
 	return nil
 }
 
 // Returns a pet by ID
 // (GET /pets/{id})
-func (s *Server) FindPetByID(ctx echo.Context, id int64) error {
+func (s *Handler) FindPetByID(ctx echo.Context, id int64) error {
 	return nil
 }

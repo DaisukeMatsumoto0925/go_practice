@@ -27,18 +27,71 @@ servers:
     description: "integration test"
 
 paths:
+  # "/shops/{shopId}/reviews":
+  #   get:
+  #     summary: "Get specified shop reviews"
+  #     description: "(des) Get specified shop reviews"
+  #     tags: ["shops"]
+  #     deprecated: false
+  #     parameters:
+  #       - name: shopId
+  #         in: path
+  #         required: true
+  #         schema: {type: string}
+
+  #     responses:
+  #       "200":
+  #         description: "Success operation"
   "/shops/{shopId}/reviews":
-    get:
-      summary: "Get specified shop reviews"
-      description: "(des) Get specified shop reviews"
-      tags: ["shops"]
-      deprecated: false
+    post:
+      summary: "Create review"
       parameters:
         - name: shopId
           in: path
           required: true
-          schema: {type: string}
-
+          schema: { type: string }
+          example: "abcd"
+        - name: x-api-key
+          in: header
+          description: "Request user's id"
+          schema: { type: string }
+          example: "XXX-XXX-XXX"
+        - name: token
+          in: cookie
+          description: "one time token"
+          schema: { type: string }
+          example: "XXX-xXX"
+      requestBody:
+        description: "contents of review"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                score: { type: integer, example: 3 }
+                comment: { type: string, example: "おいしかった" }
       responses:
-        "200":
-          description: "Success operation"
+        "201":
+          description: "Success Operation"
+          headers:
+            location:
+              description: "NEW URL of created review"
+              schema: { type: string, format: url }
+        "401":
+          description: "Client side error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: { type: string }
+                  type: { type: string }
+                  message: { type: string }
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        field: { type: string }
+                        code: { type: string }

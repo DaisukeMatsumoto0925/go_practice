@@ -95,3 +95,18 @@ paths:
                       properties:
                         field: { type: string }
                         code: { type: string }
+components:
+  schemas:
+    SampleInt:
+      type: integer
+      minimum: 0
+      exclusiveMinimum: false
+      maximum: 100
+      exclusiveMaximum: true
+    SampleString:
+      type: string
+      nullable: true
+      minLength: 10
+      maxLength: 20
+    SampleBoolean:
+      type: boolean

@@ -16,6 +16,10 @@ info:
     url: "origin"
   version: "1.0.0"
 
+tags:
+  - name: reviews
+    description: ""
+
 servers:
   - url: "http://localhost:{port}"
     description: "Local Environment"
@@ -27,30 +31,24 @@ servers:
     description: "integration test"
 
 paths:
-  # "/shops/{shopId}/reviews":
-  #   get:
-  #     summary: "Get specified shop reviews"
-  #     description: "(des) Get specified shop reviews"
-  #     tags: ["shops"]
-  #     deprecated: false
-  #     parameters:
-  #       - name: shopId
-  #         in: path
-  #         required: true
-  #         schema: {type: string}
-
-  #     responses:
-  #       "200":
-  #         description: "Success operation"
   "/shops/{shopId}/reviews":
+    parameters:
+      - name: shopId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: "Get specified shop reviews"
+      tags: ["reviews"]
+      description: "(des) Get specified shop reviews"
+      deprecated: false
+      responses:
+        "200":
+          description: "Success operation"
     post:
       summary: "Create review"
+      tags: ["reviews"]
       parameters:
-        - name: shopId
-          in: path
-          required: true
-          schema: { type: string }
-          example: "abcd"
         - name: x-api-key
           in: header
           description: "Request user's id"

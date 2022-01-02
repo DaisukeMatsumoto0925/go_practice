@@ -110,3 +110,21 @@ components:
       maxLength: 20
     SampleBoolean:
       type: boolean
+    SampleObject:
+      type: object
+      properties:
+        shop:
+          type: object
+          properties:
+            name: { type: string }
+            place: { type: string }
+        reviews:
+          type: array
+          items:
+            type: object
+            properties:
+              score:
+                type: integer
+                enum: [1, 2, 3, 4, 5]
+              comment:
+                type: string

@@ -1,0 +1,44 @@
+openapi: "3.0.3"
+
+info:
+  title: "Shop Review API"
+  description: |
+    # Features
+    - Get reviews
+    - Post review
+  termsOfService: "origin"
+  contact:
+    name: "cs"
+    url: "origin"
+    email: "address@xxx.jp"
+  license:
+    name: "MIT"
+    url: "origin"
+  version: "1.0.0"
+
+servers:
+  - url: "http://localhost:{port}"
+    description: "Local Environment"
+    variables:
+      port:
+        enum: ["3000", "8080"]
+        default: "3000"
+  - url: "https://it1.tastylog.com"
+    description: "integration test"
+
+paths:
+  "/shops/{shopId}/reviews":
+    get:
+      summary: "Get specified shop reviews"
+      description: "(des) Get specified shop reviews"
+      tags: ["shops"]
+      deprecated: false
+      parameters:
+        - name: shopId
+          in: path
+          required: true
+          schema: {type: string}
+
+      responses:
+        "200":
+          description: "Success operation"

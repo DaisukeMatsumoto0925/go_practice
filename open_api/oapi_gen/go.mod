@@ -2,12 +2,17 @@ module github.com/DaisukeMatsumoto0925/oapi_gen
 
 go 1.17
 
+require github.com/jinzhu/gorm v1.9.16
+
 require (
+	github.com/BurntSushi/toml v0.4.1
+	github.com/caarlos0/env v3.5.0+incompatible
 	github.com/deepmap/oapi-codegen v1.9.0 // indirect
 	github.com/getkin/kin-openapi v0.80.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/swag v0.19.5 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/labstack/echo/v4 v4.2.1 // indirect
 	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/mailru/easyjson v0.0.0-20190626092158-b2ccc519800e // indirect

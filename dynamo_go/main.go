@@ -20,7 +20,8 @@ func main() {
 	dynamoDbRegion := os.Getenv("AWS_REGION")
 	disableSsl := false
 
-	dynamoDbEndpoint := os.Getenv("DYNAMO_ENDPOINT")
+	dynamoDbEndpoint := "http://localhost:8000"
+	// dynamoDbEndpoint := os.Getenv("DYNAMO_ENDPOINT")
 	if len(dynamoDbEndpoint) != 0 {
 		disableSsl = true
 	}

@@ -1,47 +1,31 @@
 package main
 
-import (
-	"errors"
-	"fmt"
-	"os"
-	"time"
-)
+import "fmt"
 
 type Message string
 
-func NewMessage(phrase string) Message {
-	return Message(phrase)
+func NewMessage() Message {
+	return Message("hi there!")
 }
 
 func NewGreeter(m Message) Greeter {
-	var grumpy bool
-	if time.Now().Unix()%2 == 0 {
-		grumpy = true
-	}
-	return Greeter{Message: m, Grumpy: grumpy}
+	return Greeter{Message: m}
 }
 
 type Greeter struct {
-	Message Message // <- adding a Message field
-	Grumpy  bool
+	Message Message
 }
 
 func (g Greeter) Greet() Message {
-	if g.Grumpy {
-		return Message("Go away!")
-	}
 	return g.Message
 }
 
-func NewEvent(g Greeter) (Event, error) {
-	if g.Grumpy {
-		return Event{}, errors.New("could not create event: event greeter is grumpy")
-	}
-	return Event{Greeter: g}, nil
+func NewEvent(g Greeter) Event {
+	return Event{Greeter: g}
 }
 
 type Event struct {
-	Greeter Greeter // <- adding a Greeter field
+	Greeter Greeter
 }
 
 func (e Event) Start() {
@@ -50,10 +34,7 @@ func (e Event) Start() {
 }
 
 func main() {
-	e, err := InitializeEvent("hello")
-	if err != nil {
-		fmt.Printf("failed to create event: %s\n", err)
-		os.Exit(2)
-	}
+	e := InitializeEvent()
+
 	e.Start()
 }

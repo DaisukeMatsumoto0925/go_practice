@@ -1,5 +1,26 @@
 version: "2"
 services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    environment:
+      - PORT=8080
+      - GO_ENV=development
+      - DB_USER=root
+      - DB_NAME=dev
+      - DB_PASSWORD=
+      - TEST_DB_NAME=sample_test
+      - DB_HOST=db
+      - DB_PORT=3306
+    command: "go run main.go"
+    volumes:
+      - ./:/go/src
+    working_dir: /go/src
+    ports:
+      - "8080:8080"
+    links:
+      - db
   db:
     build:
       context: ./mysql/docker
@@ -12,18 +33,6 @@ services:
       MYSQL_DATABASE: sample
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     platform: linux/x86_64
-  app:
-    image: golang:1.15
-    environment:
-      DB_HOST: db
-    command: "go run main.go"
-    volumes:
-      - ./:/go/src
-    working_dir: /go/src
-    ports:
-      - "8080:8080"
-    links:
-      - db
 
 volumes:
   db-data:

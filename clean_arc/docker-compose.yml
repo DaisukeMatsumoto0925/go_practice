@@ -16,7 +16,7 @@ services:
     image: golang:1.15
     environment:
       DB_HOST: db
-    command: "go run server.go"
+    command: "go run main.go"
     volumes:
       - ./:/go/src
     working_dir: /go/src

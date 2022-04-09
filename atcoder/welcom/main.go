@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("start")
 	var a, b, c int
 	var s string
 	fmt.Scanf("%d", &a)

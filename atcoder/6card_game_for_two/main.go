@@ -16,8 +16,7 @@ func main() {
 		numbers[i] = n
 	}
 
-	// var first, second int
-	sort.Ints(numbers)
+	sort.Sort(sort.Reverse(sort.IntSlice(numbers)))
 
 	var first, second int
 	for i := 0; i < len(numbers); i++ {
@@ -29,5 +28,4 @@ func main() {
 	}
 
 	fmt.Print(first - second)
-	fmt.Print(first, second)
 }
